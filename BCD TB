@@ -1,1 +1,21 @@
+module BCD_tb;
+wire [6:0] seg7; //output 
+
+reg [3:0] a,b;
+reg cin, sel; //input
+// Instantiate original module (named DUT {device under test}) 
+Top uut (.A(a),.B(b),.Cin(cin),.S(sel),.ca(seg7));
+
+initial begin 
+       #10 a=4'b0000;b=4'b0000;cin=1'b0;sel=1'b0;
+       #10 a=4'b0010;b=4'b0011;
+       #10 a=4'b0001;b=4'b0001;
+       #10 a=4'b0001;b=4'b0000;
+       #10 a=4'b1000;b=4'b1000;
+       #10 a=4'b1111;b=4'b0001;
+       #10 a=4'b1111;b=4'b1111;
+       #10 $stop;
+       
+end 
+endmodule
 
